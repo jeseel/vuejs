@@ -51,9 +51,24 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
+import fileApi from "../api/files";
 import ActionBar from "../components/ActionBar.vue";
 
 export default {
   components: { ActionBar },
+  mounted(){
+    this.fetchFiles();
+  },
+  methods:{
+    fetchFiles(){
+      fileApi
+      .index()
+      .then(r=>console.log(r))
+      .catch(er=>console.log(er))
+    }
+  }
 };
 </script>
